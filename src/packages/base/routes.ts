@@ -12,6 +12,14 @@ const options: RouteRecordRaw = {
       meta: {
         title: 'vue-starter'
       }
+    },
+    {
+      path: 'metaball',
+      redirect: '',
+      component: () => import('./views/metaball/index.vue'),
+      meta: {
+        title: 'metaball'
+      }
     }
   ]
 }

@@ -2,6 +2,7 @@
   <div>
     <img alt="Vue logo" src="@/assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <div><router-link to="/metaball">meta</router-link></div>
   </div>
 </template>
 
