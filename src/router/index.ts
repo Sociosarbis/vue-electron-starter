@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import store from '@/store'
 import registerRouterStore from '@/store/router'
 import { SET_HEADER, SET_TITLE } from '@/store/mutation-types'
@@ -6,7 +6,7 @@ import BaseRoutes from '@/packages/base/routes'
 
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     BaseRoutes
   ]

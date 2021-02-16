@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, Menu, MenuItem } from 'electron'
 import * as path from 'path'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -16,15 +16,11 @@ function createMainWindow() {
   })
 
   if (isDevelopment) {
-    window.webContents.openDevTools()
-  }
-
-  if (isDevelopment) {
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
   }
   else {
     window.loadURL(
-    `file://${path.join(__dirname, 'index.html').replace(/\\/g, '/')}`
+    `file://${path.join(__dirname, './index.html').replace(/\\/g, '/')}`
     )
   }
 
@@ -62,4 +58,18 @@ app.on('ready', () => {
   mainWindow = createMainWindow()
 })
 
-Menu.setApplicationMenu(Menu.buildFromTemplate([]))
+Menu.setApplicationMenu(Menu.buildFromTemplate([
+  new MenuItem(
+    {
+      label: '快捷键',
+      submenu: [
+        {
+          role: 'toggleDevTools',
+          label: '打开开发者工具',
+          accelerator: 'F12',
+          click: () => mainWindow && mainWindow.webContents.toggleDevTools()
+        }
+      ],
+    }
+  ),
+]))

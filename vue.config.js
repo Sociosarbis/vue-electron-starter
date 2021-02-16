@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production'
+
 module.exports = {
   chainWebpack: config => {
     config.module
@@ -8,5 +10,7 @@ module.exports = {
       .end()
       .use('glslify-loader')
       .loader('glslify-loader')
-  }
+  },
+  publicPath: isProd ? './' : '/',
+  outputDir: isProd ? './dist/renderer' : 'dist'
 }
